@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLΛƆKPIИK | Official Fan Hub</title>
+    <meta name="description" content="The ultimate BLACKPINK fan experience - music, videos, gallery, and fan community">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0f0f13;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .pink-gradient {
+            background: linear-gradient(135deg, #ff4d9e 0%, #ff1e56 100%);
+        }
+        
+        .blackpink-text {
+            background: linear-gradient(to right, #000000, #ff4d9e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900;
+        }
+        
+        .member-card {
+            transition: all 0.3s ease;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(255, 30, 86, 0.3), 0 10px 10px -5px rgba(255, 30, 86, 0.1);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .audio-visualizer {
+            height: 60px;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 4px;
+        }
+        
+        .audio-bar {
+            width: 6px;
+            background: linear-gradient(to top, #ff4d9e, #ff1e56);
+            border-radius: 4px;
+            animation: equalize 1.5s infinite ease-in-out;
+            animation-delay: calc(var(--i) * 0.1s);
+        }
+        
+        @keyframes equalize {
+            0%, 100% { height: 20%; }
+            50% { height: 100%; }
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 77, 158, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: #ff4d9e;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .scroll-down {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Particle Background -->
+    <div id="particles"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black bg-opacity-90 backdrop-blur-md py-4 px-6 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="text-2xl font-bold blackpink-text mr-10">BLΛƆKPIИK</span>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-pink-400">Home</a>
+                    <a href="#music" class="nav-link text-white hover:text-pink-400">Music</a>
+                    <a href="#gallery" class="nav-link text-white hover:text-pink-400">Gallery</a>
+                    <a href="#members" class="nav-link text-white hover:text-pink-400">Members</a>
+                    <a href="#fanzone" class="nav-link text-white hover:text-pink-400">Fan Zone</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-full font-semibold transition">
+                    Join BLINK
+                </button>
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-95 py-4 px-6 absolute w-full left-0 top-full">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-white hover:text-pink-400">Home</a>
+                <a href="#music" class="text-white hover:text-pink-400">Music</a>
+                <a href="#gallery" class="text-white hover:text-pink-400">Gallery</a>
+                <a href="#members" class="text-white hover:text-pink-400">Members</a>
+                <a href="#fanzone" class="text-white hover:text-pink-400">Fan Zone</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden pt-16">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <video autoplay muted loop class="absolute w-full h-full object-cover -z-10">
+            <source src="/assets/BLACKPINK - 'BORN PINK' ANNOUNCEMENT TRAILER.mp4" type="video/mp4">
+        </video>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 blackpink-text">BLΛƆKPIИK</h1>
+            <p class="text-xl md:text-2xl mb-8 text-white">In your area! The revolution of K-pop</p>
+            <div class="flex justify-center space-x-4">
+                <button class="pink-gradient text-white px-8 py-3 rounded-full font-bold hover:opacity-90 transition">
+                    Latest Release
+                </button>
+                <button class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-black transition">
+                    Tour Dates
+                </button>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-down">
+            <i class="fas fa-chevron-down text-white text-2xl"></i>
+        </div>
+    </section>
+    
+    <!-- Music Section -->
+    <section id="music" class="py-20 px-6 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center blackpink-text">BLΛƆKPIИK IN YOUR AREA</h2>
+            
+            <!-- YouTube Videos -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-semibold mb-6 text-white">Latest Performances</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/ioNng23DkIM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="p-4">
+                            <h4 class="text-lg font-semibold mb-2">Pink Venom @ Coachella 2023</h4>
+                            <p class="text-gray-300">Historic performance at Coachella</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/IHNzOHi8sJs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="p-4">
+                            <h4 class="text-lg font-semibold mb-2">DDU-DU DDU-DU @ Tokyo Dome</h4>
+                            <p class="text-gray-300">Iconic performance in Japan</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/2S24-y0Ij3Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="p-4">
+                            <h4 class="text-lg font-semibold mb-2">Kill This Love @ The Late Show</h4>
+                            <p class="text-gray-300">US television debut</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Spotify Player -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-semibold mb-6 text-white">Official Playlist</h3>
+                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/41MozSoPIsD1dJM0CLPjZF?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <!-- Music Player -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-6 text-white">Top Hits</h3>
+                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+                    <div class="audio-visualizer mb-6">
+                        <div class="audio-bar" style="--i: 0"></div>
+                        <div class="audio-bar" style="--i: 1"></div>
+                        <div class="audio-bar" style="--i: 2"></div>
+                        <div class="audio-bar" style="--i: 3"></div>
+                        <div class="audio-bar" style="--i: 4"></div>
+                        <div class="audio-bar" style="--i: 5"></div>
+                        <div class="audio-bar" style="--i: 6"></div>
+                        <div class="audio-bar" style="--i: 7"></div>
+                        <div class="audio-bar" style="--i: 8"></div>
+                        <div class="audio-bar" style="--i: 9"></div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition cursor-pointer">
+                            <div class="flex items-center">
+                                <img src="/assets/venom.webp" alt="Pink Venom" class="w-12 h-12 rounded-md mr-4">
+                                <div>
+                                    <h4 class="font-semibold">Pink Venom</h4>
+                                    <p class="text-sm text-gray-300">BORN PINK</p>
+                                </div>
+                            </div>
+                            <span class="text-pink-400">3:06</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition cursor-pointer">
+                            <div class="flex items-center">
+                                <img src="/assets/howlike.webp" alt="How You Like That" class="w-12 h-12 rounded-md mr-4">
+                                <div>
+                                    <h4 class="font-semibold">How You Like That</h4>
+                                    <p class="text-sm text-gray-300">THE ALBUM</p>
+                                </div>
+                            </div>
+                            <span class="text-pink-400">3:02</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition cursor-pointer">
+                            <div class="flex items-center">
+                                <img src="/assets/dudu.webp" alt="DDU-DU DDU-DU" class="w-12 h-12 rounded-md mr-4">
+                                <div>
+                                    <h4 class="font-semibold">DDU-DU DDU-DU</h4>
+                                    <p class="text-sm text-gray-300">SQUARE UP</p>
+                                </div>
+                            </div>
+                            <span class="text-pink-400">3:31</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center mt-6">
+                        <button class="text-white hover:text-pink-400">
+                            <i class="fas fa-step-backward text-2xl"></i>
+                        </button>
+                        <button class="bg-pink-600 hover:bg-pink-700 text-white w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-play text-xl"></i>
+                        </button>
+                        <button class="text-white hover:text-pink-400">
+                            <i class="fas fa-step-forward text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 px-6 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center blackpink-text">GΛLLERY</h2>
+            
+            <div class="mb-8 flex flex-wrap justify-center gap-4">
+                <button class="px-4 py-2 rounded-full bg-pink-600 text-white font-medium">All</button>
+                <button class="px-4 py-2 rounded-full bg-gray-800 text-white hover:bg-gray-700 font-medium">BORN PINK</button>
+                <button class="px-4 py-2 rounded-full bg-gray-800 text-white hover:bg-gray-700 font-medium">THE ALBUM</button>
+                <button class="px-4 py-2 rounded-full bg-gray-800 text-white hover:bg-gray-700 font-medium">Kill This Love</button>
+                <button class="px-4 py-2 rounded-full bg-gray-800 text-white hover:bg-gray-700 font-medium">Solo</button>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item overflow-hidden rounded-lg shadow-lg">
+                    <img src="/assets/bp.webp" alt="BLACKPINK group photo" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-lg">
+                    <img src="/assets/jennie.webp" alt="Jennie" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-lg">
+                    <img src="/assets/lisa.webp" alt="Lisa" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-lg">
+                    <img src="/assets/rose.webp" alt="Rosé" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-lg">
+                    <img src="/assets/jissoo.webp" alt="Jisoo" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-lg">
+                    <img src="/assets/concert.webp" alt="BLACKPINK concert" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-lg">
+                    <img src="/assets/solo.webp" alt="Jennie solo" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-lg">
+                    <img src="/assets/dance.webp" alt="Lisa dance" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <button class="px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-full font-semibold hover:bg-pink-600 hover:text-white transition">
+                    Load More
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Members Section -->
+    <section id="members" class="py-20 px-6 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center blackpink-text">MEET THE MEMBERS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Jisoo -->
+                <div class="member-card bg-gray-900 rounded-xl overflow-hidden shadow-xl">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="/assets/jiso1.webp" alt="Jisoo" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-3xl font-bold text-white">JISOO</h3>
+                            <p class="text-pink-400">Main Vocalist • Visual</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">Born January 3, 1995. Known for her powerful vocals and elegant visuals.</p>
+                        <div class="mb-4">
+                            <h4 class="text-sm font-semibold text-gray-400 mb-2">SOLO WORK</h4>
+                            <p class="text-white">"FLOWER" • "ME"</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-400 mb-2">FUN FACT</h4>
+                            <p class="text-white">Was an MC on Inkigayo for over a year</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Jennie -->
+                <div class="member-card bg-gray-900 rounded-xl overflow-hidden shadow-xl">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="/assets/jen.webp alt="Jennie" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-3xl font-bold text-white">JENNIE</h3>
+                            <p class="text-pink-400">Main Rapper • Lead Vocalist</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">Born January 16, 1996. Known as "Human Chanel" for her fashion sense.</p>
+                        <div class="mb-4">
+                            <h4 class="text-sm font-semibold text-gray-400 mb-2">SOLO WORK</h4>
+                            <p class="text-white">"SOLO" • "You & Me"</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-400 mb-2">FUN FACT</h4>
+                            <p class="text-white">Fluent in English, Korean, and Japanese</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rosé -->
+                <div class="member-card bg-gray-900 rounded-xl overflow-hidden shadow-xl">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="/assets/ros.webp" alt="Rosé" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-3xl font-bold text-white">ROSÉ</h3>
+                            <p class="text-pink-400">Main Vocalist • Lead Dancer</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">Born February 11, 1997. Known for her unique vocal color and emotional delivery.</p>
+                        <div class="mb-4">
+                            <h4 class="text-sm font-semibold text-gray-400 mb-2">SOLO WORK</h4>
+                            <p class="text-white">"On The Ground" • "Gone"</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-400 mb-2">FUN FACT</h4>
+                            <p class="text-white">Born in New Zealand, raised in Australia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lisa -->
+                <div class="member-card bg-gray-900 rounded-xl overflow-hidden shadow-xl">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="/assets/lis.webp" alt="Lisa" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-3xl font-bold text-white">LISA</h3>
+                            <p class="text-pink-400">Main Dancer • Lead Rapper</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">Born March 27, 1997. Known as the "Dance Machine" of the group.</p>
+                        <div class="mb-4">
+                            <h4 class="text-sm font-semibold text-gray-400 mb-2">SOLO WORK</h4>
+                            <p class="text-white">"LALISA" • "MONEY"</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-400 mb-2">FUN FACT</h4>
+                            <p class="text-white">First non-Korean YG artist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Fan Zone Section -->
+    <section id="fanzone" class="py-20 px-6 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center blackpink-text">FΛN ZONE</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Poll -->
+                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-6 text-white">Vote: Favorite BORN PINK Track</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between bg-gray-700 p-4 rounded-lg cursor-pointer hover:bg-gray-600 transition">
+                            <span>Pink Venom</span>
+                            <span class="text-pink-400">42%</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-gray-700 p-4 rounded-lg cursor-pointer hover:bg-gray-600 transition">
+                            <span>Shut Down</span>
+                            <span class="text-pink-400">28%</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-gray-700 p-4 rounded-lg cursor-pointer hover:bg-gray-600 transition">
+                            <span>Typa Girl</span>
+                            <span class="text-pink-400">18%</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-gray-700 p-4 rounded-lg cursor-pointer hover:bg-gray-600 transition">
+                            <span>Yeah Yeah Yeah</span>
+                            <span class="text-pink-400">12%</span>
+                        </div>
+                    </div>
+                    <button class="mt-6 w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-full font-semibold transition">
+                        Submit Vote
+                    </button>
+                </div>
+                
+                <!-- Comments -->
+                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-6 text-white">Fan Messages</h3>
+                    <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <div class="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold mr-3">B</div>
+                                <span class="font-semibold">BLINK_123</span>
+                                <span class="text-gray-400 text-sm ml-auto">2h ago</span>
+                            </div>
+                            <p>Can't wait for their next world tour! The Coachella performance was legendary!</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <div class="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold mr-3">L</div>
+                                <span class="font-semibold">LisaFan99</span>
+                                <span class="text-gray-400 text-sm ml-auto">5h ago</span>
+                            </div>
+                            <p>Lisa's dance break in the Shut Down MV gives me chills every time!</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <div class="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold mr-3">J</div>
+                                <span class="font-semibold">Jensetter</span>
+                                <span class="text-gray-400 text-sm ml-auto">1d ago</span>
+                            </div>
+                            <p>Jennie's fashion is always on point. That Chanel outfit from Paris was everything!</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex">
+                        <input type="text" placeholder="Write a message..." class="flex-grow bg-gray-700 text-white px-4 py-2 rounded-l-lg focus:outline-none">
+                        <button class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Events -->
+                <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-6 text-white">Upcoming Events</h3>
+                    <div class="space-y-4">
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold">BORN PINK World Tour</h4>
+                                <span class="text-pink-400 text-sm">2023-2024</span>
+                            </div>
+                            <p class="text-gray-300 text-sm">Continuing across Asia, Europe, and North America</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold">Jisoo - FLOWER Promotions</h4>
+                                <span class="text-pink-400 text-sm">April 2023</span>
+                            </div>
+                            <p class="text-gray-300 text-sm">Music show performances and fan meetings</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold">BLACKPINK Anniversary</h4>
+                                <span class="text-pink-400 text-sm">August 8</span>
+                            </div>
+                            <p class="text-gray-300 text-sm">Celebrating 7 years since debut</p>
+                        </div>
+                    </div>
+                    <button class="mt-6 w-full bg-transparent border-2 border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white py-3 rounded-full font-semibold transition">
+                        View All Events
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Fan Art Showcase -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-semibold mb-6 text-white text-center">Fan Art Spotlight</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="gallery-item overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://i.pinimg.com/originals/9a/4a/9f/9a4a9f3e3e3a3e3a3e3a3e3a3e3a3e3a.jpg" alt="Fan art 1" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                    </div>
+                    <div class="gallery-item overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://i.pinimg.com/originals/9a/4a/9f/9a4a9f3e3e3a3e3a3e3a3e3a3e3a3e3a.jpg" alt="Fan art 2" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                    </div>
+                    <div class="gallery-item overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://i.pinimg.com/originals/9a/4a/9f/9a4a9f3e3e3a3e3a3e3a3e3a3e3a3e3a.jpg" alt="Fan art 3" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                    </div>
+                    <div class="gallery-item overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://i.pinimg.com/originals/9a/4a/9f/9a4a9f3e3e3a3e3a3e3a3e3a3e3a3e3a.jpg" alt="Fan art 4" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <button class="px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-full font-semibold hover:bg-pink-600 hover:text-white transition">
+                        Submit Your Art
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter -->
+    <section class="py-16 px-6 bg-gradient-to-r from-pink-900 to-black">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4 text-white">Join the BLINK Newsletter</h2>
+            <p class="text-gray-300 mb-8">Get exclusive updates, early ticket access, and special content delivered to your inbox.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <input type="email" placeholder="Your email address" class="px-6 py-3 rounded-full bg-black bg-opacity-50 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-500 flex-grow max-w-md">
+                <button class="px-8 py-3 rounded-full bg-pink-600 hover:bg-pink-700 text-white font-semibold transition">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-black py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 blackpink-text">BLΛƆKPIИK</h3>
+                    <p class="text-gray-400">The revolution of K-pop. In your area since 2016.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-pink-500"><i class="fab fa-youtube text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500"><i class="fab fa-tiktok text-xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Music</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Videos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Gallery</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Tour</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Members</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Jisoo</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Jennie</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Rosé</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Lisa</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Terms of Use</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-pink-500">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>© 2023 BLACKPINK. All rights reserved. This is a fan-made tribute site.</p>
+                <p class="mt-2">YG Entertainment</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+        
+        // Create particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 2px and 6px
+                const size = Math.random() * 4 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                
+                // Random animation
+                const duration = Math.random() * 20 + 10;
+                particle.style.animation = `float ${duration}s linear infinite`;
+                
+                // Add to container
+                container.appendChild(particle);
+            }
+        }
+        
+        // Add floating animation style
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0% {
+                    transform: translate(0, 0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize particles
+        createParticles();
+        
+        // Audio visualizer bars animation
+        const audioBars = document.querySelectorAll('.audio-bar');
+        audioBars.forEach((bar, index) => {
+            // Randomize animation duration slightly
+            const duration = 1.5 + Math.random() * 0.5;
+            bar.style.animationDuration = `${duration}s`;
+        });
+        
+        // Music player functionality
+        const playButton = document.querySelector('.fa-play').parentElement;
+        playButton.addEventListener('click', function() {
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-play')) {
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+            } else {
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+            }
+        });
+        
+        // Gallery filter functionality
+        const filterButtons = document.querySelectorAll('#gallery button:not(:first-child)');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // In a real implementation, this would filter the gallery items
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-pink-600');
+                    btn.classList.add('bg-gray-800');
+                });
+                this.classList.remove('bg-gray-800');
+                this.classList.add('bg-pink-600');
+            });
+        });
+    </script>
+</body>
+</html>
